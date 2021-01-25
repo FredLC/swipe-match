@@ -18,8 +18,8 @@ class HomeController: UIViewController {
     let cardViewModels: [CardViewModel] = {
         let producers = [
             Advertiser(title: "Slide Out Menu", brandName: "Lets Build That App", posterPhotoName: "slide_out_menu_poster"),
-            User(name: "Kelly", age: 23, profession: "DJ", imageName: "lady5c"),
-            User(name: "Jane", age: 28, profession: "Teacher", imageName: "lady4c")
+            User(name: "Kelly", age: 23, profession: "DJ", imageNames: ["kelly1", "kelly2", "kelly3"]),
+            User(name: "Jane", age: 28, profession: "Teacher", imageNames: ["jane1", "jane2", "jane3"])
             ] as [ProducesCardViewModel]
         
         let viewModels = producers.map({ return $0.toCardViewModel() })
