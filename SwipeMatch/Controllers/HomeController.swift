@@ -16,11 +16,11 @@ class HomeController: UIViewController {
     
     
     let cardViewModels: [CardViewModel] = {
-       let producers = [
-       User(name: "Kelly", age: 23, profession: "DJ", imageName: "lady5c"),
-       User(name: "Jane", age: 28, profession: "Teacher", imageName: "lady4c"),
-       Advertiser(title: "Slide Out Menu", brandName: "Lets Build That App", posterPhotoName: "slide_out_menu_poster")
-       ] as [ProducesCardViewModel]
+        let producers = [
+            Advertiser(title: "Slide Out Menu", brandName: "Lets Build That App", posterPhotoName: "slide_out_menu_poster"),
+            User(name: "Kelly", age: 23, profession: "DJ", imageName: "lady5c"),
+            User(name: "Jane", age: 28, profession: "Teacher", imageName: "lady4c")
+            ] as [ProducesCardViewModel]
         
         let viewModels = producers.map({ return $0.toCardViewModel() })
         return viewModels
