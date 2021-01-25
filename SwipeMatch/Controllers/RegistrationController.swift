@@ -55,19 +55,62 @@ class RegistrationController: UIViewController {
         button.backgroundColor = #colorLiteral(red: 0.8235294118, green: 0, blue: 0.3254901961, alpha: 1)
         return button
     }()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupGradientLayer()
-        
-        let stackView = UIStackView(arrangedSubviews: [
-            selectPhotoButton,
-            fullNameTextField,
-            emaillTextField,
-            passwordTextField,
-            registerButton
-        ])
+        setupLayout()
+        setupNotificationObservers()
+        setupTapGesture()
+    }
+    
+    // MARK:- Fileprivate
+    
+    fileprivate func setupTapGesture() {
+        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleDismiss)))
+    }
+    
+    @objc fileprivate func handleDismiss() {
+        view.endEditing(true)
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+            self.view.transform = .identity
+        }, completion: nil)
+    }
+    
+    fileprivate func setupNotificationObservers() {
+        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    @objc fileprivate func handleKeyboardShow(notification: Notification) {
+        guard let value = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
+        let keyboardFrame = value.cgRectValue
+        let bottomSpace = view.frame.height - stackView.frame.origin.y - stackView.frame.height
+        let difference = keyboardFrame.height - bottomSpace
+        self.view.transform = CGAffineTransform(translationX: 0, y: -difference - 8)
+    }
+    
+    @objc fileprivate func handleKeyboardHide() {
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+            self.view.transform = .identity
+        }, completion: nil)
+    }
+    
+    lazy var stackView = UIStackView(arrangedSubviews: [
+        selectPhotoButton,
+        fullNameTextField,
+        emaillTextField,
+        passwordTextField,
+        registerButton
+    ])
+    
+    fileprivate func setupLayout() {
         view.addSubview(stackView)
         stackView.axis = .vertical
         stackView.spacing = 8
