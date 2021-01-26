@@ -22,6 +22,7 @@
 		4879965125BF2D7300CE9B9F /* CardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4879965025BF2D7300CE9B9F /* CardViewModel.swift */; };
 		4880B4E425BF7EEC005BF31B /* RegistrationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4880B4E325BF7EEC005BF31B /* RegistrationController.swift */; };
 		4880B4E625BF8452005BF31B /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4880B4E525BF8452005BF31B /* CustomTextField.swift */; };
+		4880B4E825BF9533005BF31B /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4880B4E725BF9533005BF31B /* RegistrationViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		4879965025BF2D7300CE9B9F /* CardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewModel.swift; sourceTree = "<group>"; };
 		4880B4E325BF7EEC005BF31B /* RegistrationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationController.swift; sourceTree = "<group>"; };
 		4880B4E525BF8452005BF31B /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		4880B4E725BF9533005BF31B /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +132,7 @@
 			isa = PBXGroup;
 			children = (
 				4879965025BF2D7300CE9B9F /* CardViewModel.swift */,
+				4880B4E725BF9533005BF31B /* RegistrationViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -214,6 +217,7 @@
 				4880B4E425BF7EEC005BF31B /* RegistrationController.swift in Sources */,
 				481979C025BDE48000A338B7 /* Extensions+UIView.swift in Sources */,
 				4880B4E625BF8452005BF31B /* CustomTextField.swift in Sources */,
+				4880B4E825BF9533005BF31B /* RegistrationViewModel.swift in Sources */,
 				4868DE4825BF369000F30D42 /* Advertiser.swift in Sources */,
 				481979AD25BDE17600A338B7 /* SceneDelegate.swift in Sources */,
 				4879965125BF2D7300CE9B9F /* CardViewModel.swift in Sources */,

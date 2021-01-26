@@ -26,6 +26,7 @@ class RegistrationController: UIViewController {
         let textField = CustomTextField(padding: 16)
         textField.placeholder = "Enter full name"
         textField.backgroundColor = .white
+        textField.addTarget(self, action: #selector(handleTextChanged), for: .editingChanged)
         return textField
     }()
     
@@ -34,6 +35,7 @@ class RegistrationController: UIViewController {
         textField.placeholder = "Enter email"
         textField.keyboardType = .emailAddress
         textField.backgroundColor = .white
+        textField.addTarget(self, action: #selector(handleTextChanged), for: .editingChanged)
         return textField
     }()
     
@@ -42,8 +44,20 @@ class RegistrationController: UIViewController {
         textField.placeholder = "Enter password"
         textField.isSecureTextEntry = true
         textField.backgroundColor = .white
+        textField.addTarget(self, action: #selector(handleTextChanged), for: .editingChanged)
         return textField
     }()
+    
+    @objc fileprivate func handleTextChanged(textField: UITextField) {
+        if textField == fullNameTextField {
+            registrationViewModel.fullName = textField.text
+        } else if textField == emaillTextField {
+            registrationViewModel.email = emaillTextField.text
+        } else {
+            registrationViewModel.password = passwordTextField.text
+        }
+        
+    }
     
     let registerButton: UIButton = {
         let button = UIButton(type: .system)
@@ -53,6 +67,7 @@ class RegistrationController: UIViewController {
         button.heightAnchor.constraint(equalToConstant: 50).isActive = true
         button.layer.cornerRadius = 25
         button.backgroundColor = #colorLiteral(red: 0.8235294118, green: 0, blue: 0.3254901961, alpha: 1)
+        button.isEnabled = false
         return button
     }()
     
@@ -63,9 +78,18 @@ class RegistrationController: UIViewController {
         setupLayout()
         setupNotificationObservers()
         setupTapGesture()
+        setupRegistrationViewModelObserver()
     }
     
     // MARK:- Fileprivate
+    
+    let registrationViewModel = RegistrationViewModel()
+    
+    fileprivate func setupRegistrationViewModelObserver() {
+        registrationViewModel.isFormValidObserver = { [unowned self] (isFormValid) in
+            self.registerButton.isEnabled = isFormValid
+        }
+    }
     
     fileprivate func setupTapGesture() {
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleDismiss)))
