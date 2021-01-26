@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -17,15 +17,20 @@
 		481979C325BDEC6E00A338B7 /* HomeBottomControlsStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481979C225BDEC6E00A338B7 /* HomeBottomControlsStackView.swift */; };
 		481979C525BDEFB900A338B7 /* TopNavigationStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481979C425BDEFB900A338B7 /* TopNavigationStackView.swift */; };
 		481979C725BDF59700A338B7 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481979C625BDF59700A338B7 /* CardView.swift */; };
+		485F10FF25C08EED0011C977 /* Bindable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485F10FE25C08EED0011C977 /* Bindable.swift */; };
 		4868DE4825BF369000F30D42 /* Advertiser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4868DE4725BF369000F30D42 /* Advertiser.swift */; };
 		4879964D25BF248400CE9B9F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4879964C25BF248400CE9B9F /* User.swift */; };
 		4879965125BF2D7300CE9B9F /* CardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4879965025BF2D7300CE9B9F /* CardViewModel.swift */; };
 		4880B4E425BF7EEC005BF31B /* RegistrationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4880B4E325BF7EEC005BF31B /* RegistrationController.swift */; };
 		4880B4E625BF8452005BF31B /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4880B4E525BF8452005BF31B /* CustomTextField.swift */; };
 		4880B4E825BF9533005BF31B /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4880B4E725BF9533005BF31B /* RegistrationViewModel.swift */; };
+		4880B4EA25BF9E10005BF31B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4880B4E925BF9E10005BF31B /* GoogleService-Info.plist */; };
+		4FF4D24EEB278D54D9AC7892 /* Pods_SwipeMatch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E3110DA65867564E47909FC /* Pods_SwipeMatch.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1E3110DA65867564E47909FC /* Pods_SwipeMatch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwipeMatch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		31E56089287C9DA1F53A373C /* Pods-SwipeMatch.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwipeMatch.debug.xcconfig"; path = "Target Support Files/Pods-SwipeMatch/Pods-SwipeMatch.debug.xcconfig"; sourceTree = "<group>"; };
 		481979A725BDE17600A338B7 /* SwipeMatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwipeMatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		481979AA25BDE17600A338B7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		481979AC25BDE17600A338B7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -38,12 +43,15 @@
 		481979C225BDEC6E00A338B7 /* HomeBottomControlsStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeBottomControlsStackView.swift; sourceTree = "<group>"; };
 		481979C425BDEFB900A338B7 /* TopNavigationStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopNavigationStackView.swift; sourceTree = "<group>"; };
 		481979C625BDF59700A338B7 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		485F10FE25C08EED0011C977 /* Bindable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bindable.swift; sourceTree = "<group>"; };
 		4868DE4725BF369000F30D42 /* Advertiser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Advertiser.swift; sourceTree = "<group>"; };
 		4879964C25BF248400CE9B9F /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		4879965025BF2D7300CE9B9F /* CardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewModel.swift; sourceTree = "<group>"; };
 		4880B4E325BF7EEC005BF31B /* RegistrationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationController.swift; sourceTree = "<group>"; };
 		4880B4E525BF8452005BF31B /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		4880B4E725BF9533005BF31B /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
+		4880B4E925BF9E10005BF31B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		697CFF882076C2D4D0AE64A4 /* Pods-SwipeMatch.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwipeMatch.release.xcconfig"; path = "Target Support Files/Pods-SwipeMatch/Pods-SwipeMatch.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,17 +59,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4FF4D24EEB278D54D9AC7892 /* Pods_SwipeMatch.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		00CC3D945C78D91196CEDE1A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				31E56089287C9DA1F53A373C /* Pods-SwipeMatch.debug.xcconfig */,
+				697CFF882076C2D4D0AE64A4 /* Pods-SwipeMatch.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		4819799E25BDE17600A338B7 = {
 			isa = PBXGroup;
 			children = (
 				481979A925BDE17600A338B7 /* SwipeMatch */,
 				481979A825BDE17600A338B7 /* Products */,
+				00CC3D945C78D91196CEDE1A /* Pods */,
+				EC5E0352A5C12155C2A44E24 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -86,6 +106,7 @@
 				481979B025BDE17600A338B7 /* Main.storyboard */,
 				481979B325BDE17800A338B7 /* Assets.xcassets */,
 				481979B525BDE17800A338B7 /* LaunchScreen.storyboard */,
+				4880B4E925BF9E10005BF31B /* GoogleService-Info.plist */,
 				481979B825BDE17800A338B7 /* Info.plist */,
 			);
 			path = SwipeMatch;
@@ -124,6 +145,7 @@
 			children = (
 				481979AE25BDE17600A338B7 /* HomeController.swift */,
 				4880B4E325BF7EEC005BF31B /* RegistrationController.swift */,
+				485F10FE25C08EED0011C977 /* Bindable.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -137,6 +159,14 @@
 			path = ViewModels;
 			sourceTree = "<group>";
 		};
+		EC5E0352A5C12155C2A44E24 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1E3110DA65867564E47909FC /* Pods_SwipeMatch.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -144,9 +174,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 481979BB25BDE17800A338B7 /* Build configuration list for PBXNativeTarget "SwipeMatch" */;
 			buildPhases = (
+				0BD8B4E652FEBB41E3019C57 /* [CP] Check Pods Manifest.lock */,
 				481979A325BDE17600A338B7 /* Sources */,
 				481979A425BDE17600A338B7 /* Frameworks */,
 				481979A525BDE17600A338B7 /* Resources */,
+				E903A0B1322A8782477CE643 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -196,12 +228,55 @@
 			buildActionMask = 2147483647;
 			files = (
 				481979B725BDE17800A338B7 /* LaunchScreen.storyboard in Resources */,
+				4880B4EA25BF9E10005BF31B /* GoogleService-Info.plist in Resources */,
 				481979B425BDE17800A338B7 /* Assets.xcassets in Resources */,
 				481979B225BDE17600A338B7 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0BD8B4E652FEBB41E3019C57 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SwipeMatch-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E903A0B1322A8782477CE643 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SwipeMatch/Pods-SwipeMatch-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SwipeMatch/Pods-SwipeMatch-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SwipeMatch/Pods-SwipeMatch-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		481979A325BDE17600A338B7 /* Sources */ = {
@@ -216,6 +291,7 @@
 				481979C525BDEFB900A338B7 /* TopNavigationStackView.swift in Sources */,
 				4880B4E425BF7EEC005BF31B /* RegistrationController.swift in Sources */,
 				481979C025BDE48000A338B7 /* Extensions+UIView.swift in Sources */,
+				485F10FF25C08EED0011C977 /* Bindable.swift in Sources */,
 				4880B4E625BF8452005BF31B /* CustomTextField.swift in Sources */,
 				4880B4E825BF9533005BF31B /* RegistrationViewModel.swift in Sources */,
 				4868DE4825BF369000F30D42 /* Advertiser.swift in Sources */,
@@ -362,6 +438,7 @@
 		};
 		481979BC25BDE17800A338B7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 31E56089287C9DA1F53A373C /* Pods-SwipeMatch.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -380,6 +457,7 @@
 		};
 		481979BD25BDE17800A338B7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 697CFF882076C2D4D0AE64A4 /* Pods-SwipeMatch.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
