@@ -25,6 +25,7 @@
 		4880B4E625BF8452005BF31B /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4880B4E525BF8452005BF31B /* CustomTextField.swift */; };
 		4880B4E825BF9533005BF31B /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4880B4E725BF9533005BF31B /* RegistrationViewModel.swift */; };
 		4880B4EA25BF9E10005BF31B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4880B4E925BF9E10005BF31B /* GoogleService-Info.plist */; };
+		48E1FE4F25C1BCE000502387 /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E1FE4E25C1BCE000502387 /* SettingsController.swift */; };
 		4FF4D24EEB278D54D9AC7892 /* Pods_SwipeMatch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E3110DA65867564E47909FC /* Pods_SwipeMatch.framework */; };
 /* End PBXBuildFile section */
 
@@ -51,6 +52,7 @@
 		4880B4E525BF8452005BF31B /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		4880B4E725BF9533005BF31B /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
 		4880B4E925BF9E10005BF31B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		48E1FE4E25C1BCE000502387 /* SettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
 		697CFF882076C2D4D0AE64A4 /* Pods-SwipeMatch.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwipeMatch.release.xcconfig"; path = "Target Support Files/Pods-SwipeMatch/Pods-SwipeMatch.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -146,6 +148,7 @@
 				481979AE25BDE17600A338B7 /* HomeController.swift */,
 				4880B4E325BF7EEC005BF31B /* RegistrationController.swift */,
 				485F10FE25C08EED0011C977 /* Bindable.swift */,
+				48E1FE4E25C1BCE000502387 /* SettingsController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -289,6 +292,7 @@
 				481979C325BDEC6E00A338B7 /* HomeBottomControlsStackView.swift in Sources */,
 				4879964D25BF248400CE9B9F /* User.swift in Sources */,
 				481979C525BDEFB900A338B7 /* TopNavigationStackView.swift in Sources */,
+				48E1FE4F25C1BCE000502387 /* SettingsController.swift in Sources */,
 				4880B4E425BF7EEC005BF31B /* RegistrationController.swift in Sources */,
 				481979C025BDE48000A338B7 /* Extensions+UIView.swift in Sources */,
 				485F10FF25C08EED0011C977 /* Bindable.swift in Sources */,
