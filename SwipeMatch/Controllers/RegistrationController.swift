@@ -46,7 +46,7 @@ class RegistrationController: UIViewController {
     }
     
     let fullNameTextField: CustomTextField = {
-        let textField = CustomTextField(padding: 16)
+        let textField = CustomTextField(padding: 16, height: 50)
         textField.placeholder = "Enter full name"
         textField.backgroundColor = .white
         textField.addTarget(self, action: #selector(handleTextChanged), for: .editingChanged)
@@ -54,7 +54,7 @@ class RegistrationController: UIViewController {
     }()
     
     let emaillTextField: CustomTextField = {
-        let textField = CustomTextField(padding: 16)
+        let textField = CustomTextField(padding: 16, height: 50)
         textField.placeholder = "Enter email"
         textField.keyboardType = .emailAddress
         textField.backgroundColor = .white
@@ -63,7 +63,7 @@ class RegistrationController: UIViewController {
     }()
     
     let passwordTextField: CustomTextField = {
-        let textField = CustomTextField(padding: 16)
+        let textField = CustomTextField(padding: 16, height: 50)
         textField.placeholder = "Enter password"
         textField.isSecureTextEntry = true
         textField.backgroundColor = .white
@@ -194,12 +194,32 @@ class RegistrationController: UIViewController {
         registerButton
     ])
     
+    let goToLoginButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("Go to Login", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .heavy)
+        button.addTarget(self, action: #selector(handleGoToLogin), for: .touchUpInside)
+        return button
+    }()
+    
+    @objc fileprivate func handleGoToLogin() {
+        let loginController = LoginController()
+        navigationController?.pushViewController(loginController, animated: true)
+    }
+    
     fileprivate func setupLayout() {
+        navigationController?.isNavigationBarHidden = true
+        
         view.addSubview(stackView)
+        
         stackView.axis = .vertical
         stackView.spacing = 8
         stackView.anchor(top: nil, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor, padding: .init(top: 0, left: 50, bottom: 0, right: 50))
         stackView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        
+        view.addSubview(goToLoginButton)
+        goToLoginButton.anchor(top: nil, leading: view.leadingAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, trailing: view.trailingAnchor)
     }
     
     fileprivate func setupGradientLayer() {
