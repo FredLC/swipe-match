@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 import JGProgressHUD
 
-class HomeController: UIViewController {
+class HomeController: UIViewController, SettingsControllerDelegate {
     
     let topStackView = TopNavigationStackView()
     let cardsDeckView = UIView()
@@ -25,8 +25,28 @@ class HomeController: UIViewController {
         bottomControls.refreshButton.addTarget(self, action: #selector(handleRefresh), for: .touchUpInside)
         
         setupLayout()
-        setupFirestoreUserCards()
-        fetchUsersFromFirestore()
+//        setupFirestoreUserCards()
+//        fetchUsersFromFirestore()
+        fetchCurrentUser()
+    }
+    
+    fileprivate let hud = JGProgressHUD(style: .dark)
+    fileprivate var user: User?
+    
+    fileprivate func fetchCurrentUser() {
+        hud.textLabel.text = "Loading..."
+        hud.show(in: view)
+        cardsDeckView.subviews.forEach({ $0.removeFromSuperview() })
+        Firestore.firestore().fetchCurrentUser { (user, err) in
+            if let err = err {
+                print("Failed to fetch user: ", err)
+                self.hud.dismiss()
+                return
+            }
+            
+            self.user = user
+            self.fetchUsersFromFirestore()
+        }
     }
     
     @objc func handleRefresh() {
@@ -35,8 +55,13 @@ class HomeController: UIViewController {
     
     @objc func handleSettings() {
         let settingsController = SettingsController()
+        settingsController.delegate = self
         let navController = UINavigationController(rootViewController: settingsController)
         present(navController, animated: true)
+    }
+    
+    func didSaveSettings() {
+        fetchCurrentUser()
     }
 
     // MARK:- Fileprivate
@@ -44,14 +69,13 @@ class HomeController: UIViewController {
     var lastFetchedUser: User?
     
     fileprivate func fetchUsersFromFirestore() {
-        let hud = JGProgressHUD(style: .dark)
-        hud.textLabel.text = "Fetching people..."
-        hud.show(in: view)
+        guard let minAge = user?.minSeekingAge, let maxAge = user?.maxSeekingAge else { return }
         
-        let query = Firestore.firestore().collection("users").order(by: "uid").start(after: [lastFetchedUser?.uid ?? ""]).limit(to: 2)
+        let query = Firestore.firestore().collection("users").whereField("age", isLessThan: maxAge).whereField("age", isGreaterThan: minAge)
+//        let query = Firestore.firestore().collection("users").order(by: "uid").start(after: [lastFetchedUser?.uid ?? ""]).limit(to: 2)
         
         query.getDocuments { (snapshot, err) in
-            hud.dismiss()
+            self.hud.dismiss()
             if let err = err {
                 print("Failed to fetch users from Firestore: ", err)
                 return
