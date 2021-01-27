@@ -15,18 +15,6 @@ class HomeController: UIViewController {
     let topStackView = TopNavigationStackView()
     let cardsDeckView = UIView()
     let bottomControls = HomeBottomControlsStackView()
-    
-    
-//    let cardViewModels: [CardViewModel] = {
-//        let producers = [
-//            Advertiser(title: "Slide Out Menu", brandName: "Lets Build That App", posterPhotoName: "slide_out_menu_poster"),
-//            User(name: "Kelly", age: 23, profession: "DJ", imageNames: ["kelly1", "kelly2", "kelly3"]),
-//            User(name: "Jane", age: 28, profession: "Teacher", imageNames: ["jane1", "jane2", "jane3"])
-//            ] as [ProducesCardViewModel]
-//
-//        let viewModels = producers.map({ return $0.toCardViewModel() })
-//        return viewModels
-//    }()
 
     var cardViewModels = [CardViewModel]()
     
@@ -57,7 +45,7 @@ class HomeController: UIViewController {
     
     fileprivate func fetchUsersFromFirestore() {
         let hud = JGProgressHUD(style: .dark)
-        hud.textLabel.text = "Fetching more people..."
+        hud.textLabel.text = "Fetching people..."
         hud.show(in: view)
         
         let query = Firestore.firestore().collection("users").order(by: "uid").start(after: [lastFetchedUser?.uid ?? ""]).limit(to: 2)
@@ -83,6 +71,7 @@ class HomeController: UIViewController {
         let cardView = CardView(frame: .zero)
         cardView.cardViewModel = user.toCardViewModel()
         cardsDeckView.addSubview(cardView)
+        cardsDeckView.sendSubviewToBack(cardView)
         cardView.fillSuperview()
     }
     
@@ -91,7 +80,6 @@ class HomeController: UIViewController {
             let cardView = CardView(frame: .zero)
             cardView.cardViewModel = cardVM
             cardsDeckView.addSubview(cardView)
-            cardsDeckView.sendSubviewToBack(cardView)
             cardView.fillSuperview()
         }
     }
