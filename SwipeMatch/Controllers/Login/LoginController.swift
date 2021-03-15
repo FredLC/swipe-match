@@ -80,17 +80,19 @@ class LoginController: UIViewController {
         }
     }
     
-    fileprivate let backToRegisterButton: UIButton = {
+    fileprivate let goToRegisterButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("Go back", for: .normal)
+        button.setTitle("Register", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
-        button.addTarget(self, action: #selector(handleBack), for: .touchUpInside)
+        button.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        button.addTarget(self, action: #selector(handleGoToRegister), for: .touchUpInside)
         return button
     }()
     
-    @objc fileprivate func handleBack() {
-        navigationController?.popViewController(animated: true)
+    @objc fileprivate func handleGoToRegister() {
+        let registrationController = RegistrationController()
+        navigationController?.pushViewController(registrationController, animated: true)
     }
 
     override func viewDidLoad() {
@@ -114,7 +116,7 @@ class LoginController: UIViewController {
         }
         loginViewModel.isLoggingIn.bind { [unowned self] (isRegistering) in
             if isRegistering == true {
-                self.loginHUD.textLabel.text = "Register"
+                self.loginHUD.textLabel.text = "Logging you in..."
                 self.loginHUD.show(in: self.view)
             } else {
                 self.loginHUD.dismiss()
@@ -132,7 +134,7 @@ class LoginController: UIViewController {
     fileprivate func setupGradientLayer() {
         let topColor = #colorLiteral(red: 0.9921568627, green: 0.3568627451, blue: 0.3725490196, alpha: 1)
         let bottomColor = #colorLiteral(red: 0.8980392157, green: 0, blue: 0.4470588235, alpha: 1)
-        // make sure to user cgColor
+        // make sure to use cgColor
         gradientLayer.colors = [topColor.cgColor, bottomColor.cgColor]
         gradientLayer.locations = [0, 1]
         view.layer.addSublayer(gradientLayer)
@@ -145,8 +147,8 @@ class LoginController: UIViewController {
         verticalStackView.anchor(top: nil, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor, padding: .init(top: 0, left: 50, bottom: 0, right: 50))
         verticalStackView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
         
-        view.addSubview(backToRegisterButton)
-        backToRegisterButton.anchor(top: nil, leading: view.leadingAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, trailing: view.trailingAnchor)
+        view.addSubview(goToRegisterButton)
+        goToRegisterButton.anchor(top: nil, leading: view.leadingAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, trailing: view.trailingAnchor)
     }
 
 }

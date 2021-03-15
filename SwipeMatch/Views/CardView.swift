@@ -73,6 +73,11 @@ class CardView: UIView {
         }
     }
     
+    fileprivate let moreInfoButton: UIButton = {
+        let button = UIButton(type: .system)
+        return button
+    }()
+    
     fileprivate func setupLayout() {
         layer.cornerRadius = 10
         clipsToBounds = true

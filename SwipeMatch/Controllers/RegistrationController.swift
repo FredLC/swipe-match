@@ -199,13 +199,13 @@ class RegistrationController: UIViewController {
         button.setTitle("Go to Login", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .heavy)
+        button.heightAnchor.constraint(equalToConstant: 40).isActive = true
         button.addTarget(self, action: #selector(handleGoToLogin), for: .touchUpInside)
         return button
     }()
     
     @objc fileprivate func handleGoToLogin() {
-        let loginController = LoginController()
-        navigationController?.pushViewController(loginController, animated: true)
+        navigationController?.popViewController(animated: true)
     }
     
     fileprivate func setupLayout() {

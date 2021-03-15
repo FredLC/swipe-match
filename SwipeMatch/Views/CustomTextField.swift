@@ -18,6 +18,7 @@ class CustomTextField: UITextField {
         self.height = height
         super.init(frame: .zero)
         layer.cornerRadius = 25
+        backgroundColor = .white
     }
     
     override var intrinsicContentSize: CGSize {
