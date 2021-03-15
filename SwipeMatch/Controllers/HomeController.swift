@@ -118,6 +118,7 @@ class HomeController: UIViewController, SettingsControllerDelegate, LoginControl
     
     func didTapMoreInfo() {
         let userDetailsController = UserDetailsController()
+        userDetailsController.modalPresentationStyle = .fullScreen
         present(userDetailsController, animated: true)
     }
     
