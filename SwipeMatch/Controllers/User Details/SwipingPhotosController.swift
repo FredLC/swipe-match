@@ -10,21 +10,24 @@ import UIKit
 
 class SwipingPhotosController: UIPageViewController, UIPageViewControllerDataSource {
     
-    let controllers = [
-        PhotoController(image: #imageLiteral(resourceName: "boost_circle")),
-        PhotoController(image: #imageLiteral(resourceName: "super_like_circle")),
-        PhotoController(image: #imageLiteral(resourceName: "refresh_circle")),
-        PhotoController(image: #imageLiteral(resourceName: "dismiss_circle")),
-        PhotoController(image: #imageLiteral(resourceName: "like_circle"))
-    ]
+    var cardViewModel: CardViewModel! {
+        didSet {
+            controllers = cardViewModel.imageNames.map({ (imageUrl) -> UIViewController in
+                let photoController = PhotoController(imageUrl: imageUrl)
+                return photoController
+            })
+            
+            setViewControllers([controllers.first!], direction: .forward, animated: false)
+        }
+    }
+    
+    var controllers = [UIViewController]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         dataSource = self
 
         view.backgroundColor = .white
-        
-        setViewControllers([controllers.first!], direction: .forward, animated: false)
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
@@ -44,14 +47,16 @@ class PhotoController: UIViewController {
     
     let imageView = UIImageView(image: #imageLiteral(resourceName: "app_icon"))
     
-    init(image: UIImage) {
+    init(imageUrl: String) {
         super.init(nibName: nil, bundle: nil)
-        imageView.image = image
+        if let url = URL(string: imageUrl) {
+            imageView.sd_setImage(with: url)
+        }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        imageView.contentMode = .scaleAspectFit
+        imageView.contentMode = .scaleAspectFill
         view.addSubview(imageView)
         imageView.fillSuperview()
     }
