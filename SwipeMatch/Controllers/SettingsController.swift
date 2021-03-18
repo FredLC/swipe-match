@@ -210,13 +210,16 @@ class SettingsController: UITableViewController, UIImagePickerControllerDelegate
         self.user?.maxSeekingAge = Int(slider.value)
     }
     
+    static let defaultMinSeekingAge = 18
+    static let defaultMaxSeekingAge = 50
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 5 {
             let ageRangeCell = AgeRangeCell(style: .default, reuseIdentifier: nil)
             ageRangeCell.minSlider.addTarget(self, action: #selector(handleMinAgeChange), for: .valueChanged)
             ageRangeCell.maxSlider.addTarget(self, action: #selector(handleMaxAgeChange), for: .valueChanged)
-            ageRangeCell.minLabel.text = "Min: \(user?.minSeekingAge ?? 18)"
-            ageRangeCell.maxLabel.text = "Max: \(user?.maxSeekingAge ?? 18)"
+            ageRangeCell.minLabel.text = "Min: \(user?.minSeekingAge ?? SettingsController.defaultMinSeekingAge)"
+            ageRangeCell.maxLabel.text = "Max: \(user?.maxSeekingAge ?? SettingsController.defaultMaxSeekingAge)"
             return ageRangeCell
         }
         
@@ -282,7 +285,7 @@ class SettingsController: UITableViewController, UIImagePickerControllerDelegate
             "age": user?.age ?? 18,
             "profession": user?.profession ?? "",
             "minSeekingAge": user?.minSeekingAge ?? 18,
-            "maxSeekingAge": user?.maxSeekingAge ?? 18
+            "maxSeekingAge": user?.maxSeekingAge ?? 50
         ]
         
         let hud = JGProgressHUD(style: .dark)
