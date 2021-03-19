@@ -13,11 +13,13 @@ protocol ProducesCardViewModel {
 }
 
 class CardViewModel {
+    let uid: String
     let imageNames: [String]
     let attributedString: NSAttributedString
     let textAlignment: NSTextAlignment
     
-    init(imageNames: [String], attributedString: NSAttributedString, textAlignment: NSTextAlignment) {
+    init(uid: String, imageNames: [String], attributedString: NSAttributedString, textAlignment: NSTextAlignment) {
+        self.uid = uid
         self.imageNames = imageNames
         self.attributedString = attributedString
         self.textAlignment = textAlignment

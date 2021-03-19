@@ -120,14 +120,50 @@ class HomeController: UIViewController, SettingsControllerDelegate, LoginControl
         }
     }
     
-    @objc fileprivate func handleDislike() {
+    @objc func handleDislike() {
+        saveSwipeToFirestore(didLike: 0)
         performSwipeAnimation(translation: -700, angle: -15)
     }
     
     var topCardView: CardView?
     
-    @objc fileprivate func handleLike() {
+    @objc func handleLike() {
+        saveSwipeToFirestore(didLike: 1)
         performSwipeAnimation(translation: 700, angle: 15)
+    }
+    
+    fileprivate func saveSwipeToFirestore(didLike: Int) {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        
+        guard let cardUID = topCardView?.cardViewModel.uid else { return }
+        let documentData = [cardUID: didLike]
+        
+        Firestore.firestore().collection("swipes").document(uid).getDocument { (snapshot, err) in
+            if let err = err {
+                print("Could not retrieve swipe from Firestore: ", err)
+                return
+            }
+            
+            if snapshot?.exists == true {
+                Firestore.firestore().collection("swipes").document(uid).updateData(documentData) { (err) in
+                    if let err = err {
+                        print("Failed to update swipe in Firestore...: ", err)
+                        return
+                    }
+                    
+                    print("Successfully updated swipe in Firestore.")
+                }
+            } else {
+                Firestore.firestore().collection("swipes").document(uid).setData(documentData) { (err) in
+                    if let err = err {
+                        print("Failed to save swipe to Firestore...: ", err)
+                        return
+                    }
+                    
+                    print("Successfully saved swipe to Firestore.")
+                }
+            }
+        }
     }
     
     fileprivate func performSwipeAnimation(translation: CGFloat, angle: CGFloat) {
