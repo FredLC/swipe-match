@@ -7,26 +7,89 @@
 //
 
 import LBTATools
+import Firebase
 
-class MatchesMessagesController: UICollectionViewController {
+struct Match {
+    let name, profileImageUrl: String
     
-    let customNavBar: UIView = {
-        let navBar = UIView(backgroundColor: .white)
-        let iconImageView = UIImageView(image: #imageLiteral(resourceName: "top_messages_icon").withRenderingMode(.alwaysTemplate), contentMode: .scaleAspectFit)
-        iconImageView.tintColor = #colorLiteral(red: 0.9333333333, green: 0.4588235294, blue: 0.462745098, alpha: 1)
-        let messagesLabel = UILabel(text: "Messages", font: .boldSystemFont(ofSize: 20), textColor: #colorLiteral(red: 0.9333333333, green: 0.4588235294, blue: 0.462745098, alpha: 1), textAlignment: .center)
-        let feedLabel = UILabel(text: "Feed", font: .boldSystemFont(ofSize: 20), textColor: .gray, textAlignment: .center)
+    init(dictionary: [String: Any]) {
+        self.name = dictionary["name"] as? String ?? ""
+        self.profileImageUrl = dictionary["profileImageUrl"] as? String ?? ""
+    }
+}
+
+class MatchCell: LBTAListCell<Match> {
+    
+    let profileImageView = UIImageView(image: #imageLiteral(resourceName: "kelly1"), contentMode: .scaleAspectFill)
+    let usernameLabel = UILabel(text: "Kelly", font: .systemFont(ofSize: 14), textColor: #colorLiteral(red: 0.1333333333, green: 0.1333333333, blue: 0.1333333333, alpha: 1), textAlignment: .center, numberOfLines: 0)
+    
+    override var item: Match! {
+        didSet {
+            usernameLabel.text = item.name
+            profileImageView.sd_setImage(with: URL(string: item.profileImageUrl))
+        }
+    }
+    
+    override func setupViews() {
+        super.setupViews()
         
-        navBar.setupShadow(opacity: 0.2, radius: 8, offset: .init(width: 0, height: 10), color: UIColor(white: 0, alpha: 0.3))
-        navBar.stack(iconImageView.withHeight(44), navBar.hstack(messagesLabel, feedLabel, distribution: .fillEqually)).padTop(10)
-        return navBar
-    }()
+        profileImageView.clipsToBounds = true
+        profileImageView.constrainWidth(80)
+        profileImageView.constrainHeight(80)
+        profileImageView.layer.cornerRadius = 80 / 2
+        
+        stack(stack(profileImageView, alignment: .center), usernameLabel)
+    }
+}
+
+class MatchesMessagesController: LBTAListController<MatchCell, Match>, UICollectionViewDelegateFlowLayout {
+    
+    let customNavBar = MatchesNavBar()
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return .init(width: 120, height: 140)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.backgroundColor = .white
         
+        fetchMatches()
+        
+        items = []
+        
+        customNavBar.backButton.addTarget(self, action: #selector(handleBack), for: .touchUpInside)
+        
         view.addSubview(customNavBar)
         customNavBar.anchor(top: view.safeAreaLayoutGuide.topAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor, size: .init(width: 0, height: 150))
+        
+        collectionView.contentInset.top = 150
+    }
+    
+    fileprivate func fetchMatches() {
+        guard let currentUserId = Auth.auth().currentUser?.uid else { return }
+        
+        Firestore.firestore().collection("matches_messages").document(currentUserId).collection("matches").getDocuments { (snapshot, err) in
+            if let err = err {
+                print("Failed to fetch matches :", err)
+                return
+            }
+            
+            var matches = [Match]()
+            snapshot?.documents.forEach({ (document) in
+                matches.append(.init(dictionary: document.data()))
+            })
+            
+            self.items = matches
+            self.collectionView.reloadData()
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return .init(top: 16, left: 0, bottom: 16, right: 0)
+    }
+    
+    @objc fileprivate func handleBack() {
+        navigationController?.popViewController(animated: true)
     }
 }

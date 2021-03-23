@@ -17,6 +17,7 @@
 		481979C525BDEFB900A338B7 /* TopNavigationStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481979C425BDEFB900A338B7 /* TopNavigationStackView.swift */; };
 		481979C725BDF59700A338B7 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481979C625BDF59700A338B7 /* CardView.swift */; };
 		483BC068260A3BE200D58A2B /* MatchesMessagesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 483BC067260A3BE200D58A2B /* MatchesMessagesController.swift */; };
+		483BC06A260A446B00D58A2B /* MatchesNavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 483BC069260A446B00D58A2B /* MatchesNavBar.swift */; };
 		485F10FF25C08EED0011C977 /* Bindable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485F10FE25C08EED0011C977 /* Bindable.swift */; };
 		4868DE4825BF369000F30D42 /* Advertiser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4868DE4725BF369000F30D42 /* Advertiser.swift */; };
 		486C48FB26000780007650EE /* UserDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 486C48FA26000780007650EE /* UserDetailsController.swift */; };
@@ -55,6 +56,7 @@
 		481979C425BDEFB900A338B7 /* TopNavigationStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopNavigationStackView.swift; sourceTree = "<group>"; };
 		481979C625BDF59700A338B7 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		483BC067260A3BE200D58A2B /* MatchesMessagesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchesMessagesController.swift; sourceTree = "<group>"; };
+		483BC069260A446B00D58A2B /* MatchesNavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchesNavBar.swift; sourceTree = "<group>"; };
 		485F10FE25C08EED0011C977 /* Bindable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bindable.swift; sourceTree = "<group>"; };
 		4868DE4725BF369000F30D42 /* Advertiser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Advertiser.swift; sourceTree = "<group>"; };
 		486C48FA26000780007650EE /* UserDetailsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailsController.swift; sourceTree = "<group>"; };
@@ -156,6 +158,7 @@
 				4881EE96260653EB00882DB0 /* MatchView.swift */,
 				4881EE9826065F1800882DB0 /* SendMessageButton.swift */,
 				4881EE9A260662CE00882DB0 /* KeepSwipingButton.swift */,
+				483BC069260A446B00D58A2B /* MatchesNavBar.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -357,6 +360,7 @@
 				4881EE97260653EB00882DB0 /* MatchView.swift in Sources */,
 				48B0E73825C22235004243A4 /* LoginViewModel.swift in Sources */,
 				481979C525BDEFB900A338B7 /* TopNavigationStackView.swift in Sources */,
+				483BC06A260A446B00D58A2B /* MatchesNavBar.swift in Sources */,
 				48E1FE4F25C1BCE000502387 /* SettingsController.swift in Sources */,
 				4880B4E425BF7EEC005BF31B /* RegistrationController.swift in Sources */,
 				485F10FF25C08EED0011C977 /* Bindable.swift in Sources */,

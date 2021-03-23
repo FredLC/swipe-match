@@ -47,7 +47,7 @@ class HomeController: UIViewController, SettingsControllerDelegate, LoginControl
     }
     
     @objc func handleMessages() {
-        let vc = MatchesMessagesController(collectionViewLayout: UICollectionViewFlowLayout())
+        let vc = MatchesMessagesController()
         navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -131,6 +131,9 @@ class HomeController: UIViewController, SettingsControllerDelegate, LoginControl
             snapshot?.documents.forEach({ (documentSnapshot) in
                 let userDictionary = documentSnapshot.data()
                 let user = User(dictionary: userDictionary)
+                
+                self.users[user.uid ?? ""] = user
+                
                 let notCurrentUser = user.uid != Auth.auth().currentUser?.uid
 //                let hasNotSwipedBefore = self.swipes[user.uid!] == nil
                 let hasNotSwipedBefore = true
@@ -148,16 +151,18 @@ class HomeController: UIViewController, SettingsControllerDelegate, LoginControl
         }
     }
     
-    @objc func handleDislike() {
-        saveSwipeToFirestore(didLike: 0)
-        performSwipeAnimation(translation: -700, angle: -15)
-    }
+    var users = [String: User]()
     
     var topCardView: CardView?
     
     @objc func handleLike() {
         saveSwipeToFirestore(didLike: 1)
         performSwipeAnimation(translation: 700, angle: 15)
+    }
+    
+    @objc func handleDislike() {
+        saveSwipeToFirestore(didLike: 0)
+        performSwipeAnimation(translation: -700, angle: -15)
     }
     
     fileprivate func saveSwipeToFirestore(didLike: Int) {
@@ -216,6 +221,28 @@ class HomeController: UIViewController, SettingsControllerDelegate, LoginControl
             let hasMatched = data[uid] as? Int == 1
             if hasMatched {
                 self.presentMatchView(cardUID: cardUID)
+                
+                guard let cardUser = self.users[cardUID] else { return }
+                
+                let data = ["name": cardUser.name ?? "", "profileImageUrl": cardUser.imageUrl1 ?? "", "uid": cardUID, "timestamp": Timestamp(date: Date())] as [String : Any]
+                
+                Firestore.firestore().collection("matches_messages").document(uid).collection("matches").document(cardUID).setData(data) { (err) in
+                    if let err = err {
+                        print("Failed to save match info: ", err)
+                        return
+                    }
+                }
+                
+                guard let currentUser = self.user else { return }
+                
+                let otherMatchData = ["name": currentUser.name ?? "", "profileImageUrl": currentUser.imageUrl1 ?? "", "uid": cardUID, "timestamp": Timestamp(date: Date())] as [String : Any]
+                
+                Firestore.firestore().collection("matches_messages").document(cardUID).collection("matches").document(uid).setData(otherMatchData) { (err) in
+                    if let err = err {
+                        print("Failed to save match info: ", err)
+                        return
+                    }
+                }
             }
         }
     }
