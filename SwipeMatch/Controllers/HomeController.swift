@@ -20,8 +20,11 @@ class HomeController: UIViewController, SettingsControllerDelegate, LoginControl
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.navigationBar.isHidden = true
         
         topStackView.settingsButton.addTarget(self, action: #selector(handleSettings), for: .touchUpInside)
+        topStackView.messageButton.addTarget(self, action: #selector(handleMessages), for: .touchUpInside)
+        
         bottomControls.refreshButton.addTarget(self, action: #selector(handleRefresh), for: .touchUpInside)
         bottomControls.dislikeButton.addTarget(self, action: #selector(handleDislike), for: .touchUpInside)
         bottomControls.likeButton.addTarget(self, action: #selector(handleLike), for: .touchUpInside)
@@ -41,6 +44,11 @@ class HomeController: UIViewController, SettingsControllerDelegate, LoginControl
         let navController = UINavigationController(rootViewController: settingsController)
         navController.modalPresentationStyle = .fullScreen
         present(navController, animated: true)
+    }
+    
+    @objc func handleMessages() {
+        let vc = MatchesMessagesController(collectionViewLayout: UICollectionViewFlowLayout())
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     
@@ -208,10 +216,6 @@ class HomeController: UIViewController, SettingsControllerDelegate, LoginControl
             let hasMatched = data[uid] as? Int == 1
             if hasMatched {
                 self.presentMatchView(cardUID: cardUID)
-//                let hud = JGProgressHUD(style: .dark)
-//                hud.textLabel.text = "Found a match!"
-//                hud.show(in: self.view)
-//                hud.dismiss(afterDelay: 4)
             }
         }
     }

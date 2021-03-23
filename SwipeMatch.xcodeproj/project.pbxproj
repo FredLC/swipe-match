@@ -13,10 +13,10 @@
 		481979B225BDE17600A338B7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 481979B025BDE17600A338B7 /* Main.storyboard */; };
 		481979B425BDE17800A338B7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 481979B325BDE17800A338B7 /* Assets.xcassets */; };
 		481979B725BDE17800A338B7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 481979B525BDE17800A338B7 /* LaunchScreen.storyboard */; };
-		481979C025BDE48000A338B7 /* Extensions+UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481979BF25BDE48000A338B7 /* Extensions+UIView.swift */; };
 		481979C325BDEC6E00A338B7 /* HomeBottomControlsStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481979C225BDEC6E00A338B7 /* HomeBottomControlsStackView.swift */; };
 		481979C525BDEFB900A338B7 /* TopNavigationStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481979C425BDEFB900A338B7 /* TopNavigationStackView.swift */; };
 		481979C725BDF59700A338B7 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481979C625BDF59700A338B7 /* CardView.swift */; };
+		483BC068260A3BE200D58A2B /* MatchesMessagesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 483BC067260A3BE200D58A2B /* MatchesMessagesController.swift */; };
 		485F10FF25C08EED0011C977 /* Bindable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485F10FE25C08EED0011C977 /* Bindable.swift */; };
 		4868DE4825BF369000F30D42 /* Advertiser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4868DE4725BF369000F30D42 /* Advertiser.swift */; };
 		486C48FB26000780007650EE /* UserDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 486C48FA26000780007650EE /* UserDetailsController.swift */; };
@@ -51,10 +51,10 @@
 		481979B325BDE17800A338B7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		481979B625BDE17800A338B7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		481979B825BDE17800A338B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		481979BF25BDE48000A338B7 /* Extensions+UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extensions+UIView.swift"; sourceTree = "<group>"; };
 		481979C225BDEC6E00A338B7 /* HomeBottomControlsStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeBottomControlsStackView.swift; sourceTree = "<group>"; };
 		481979C425BDEFB900A338B7 /* TopNavigationStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopNavigationStackView.swift; sourceTree = "<group>"; };
 		481979C625BDF59700A338B7 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		483BC067260A3BE200D58A2B /* MatchesMessagesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchesMessagesController.swift; sourceTree = "<group>"; };
 		485F10FE25C08EED0011C977 /* Bindable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bindable.swift; sourceTree = "<group>"; };
 		4868DE4725BF369000F30D42 /* Advertiser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Advertiser.swift; sourceTree = "<group>"; };
 		486C48FA26000780007650EE /* UserDetailsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailsController.swift; sourceTree = "<group>"; };
@@ -139,7 +139,6 @@
 		481979BE25BDE41F00A338B7 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				481979BF25BDE48000A338B7 /* Extensions+UIView.swift */,
 				48B0E73225C21711004243A4 /* Firebase+Utils.swift */,
 			);
 			path = Extensions;
@@ -159,6 +158,14 @@
 				4881EE9A260662CE00882DB0 /* KeepSwipingButton.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		483BC066260A3BC000D58A2B /* MatchesMessages */ = {
+			isa = PBXGroup;
+			children = (
+				483BC067260A3BE200D58A2B /* MatchesMessagesController.swift */,
+			);
+			path = MatchesMessages;
 			sourceTree = "<group>";
 		};
 		486C48F926000765007650EE /* User Details */ = {
@@ -183,6 +190,7 @@
 		4879964E25BF2C9900CE9B9F /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				483BC066260A3BC000D58A2B /* MatchesMessages */,
 				486C48F926000765007650EE /* User Details */,
 				48B0E73425C22227004243A4 /* Login */,
 				481979AE25BDE17600A338B7 /* HomeController.swift */,
@@ -351,7 +359,6 @@
 				481979C525BDEFB900A338B7 /* TopNavigationStackView.swift in Sources */,
 				48E1FE4F25C1BCE000502387 /* SettingsController.swift in Sources */,
 				4880B4E425BF7EEC005BF31B /* RegistrationController.swift in Sources */,
-				481979C025BDE48000A338B7 /* Extensions+UIView.swift in Sources */,
 				485F10FF25C08EED0011C977 /* Bindable.swift in Sources */,
 				4880B4E625BF8452005BF31B /* CustomTextField.swift in Sources */,
 				4880B4E825BF9533005BF31B /* RegistrationViewModel.swift in Sources */,
@@ -361,6 +368,7 @@
 				48E1FE5125C1C91400502387 /* SettingsCell.swift in Sources */,
 				486C48FD26001DF5007650EE /* SwipingPhotosController.swift in Sources */,
 				4879965125BF2D7300CE9B9F /* CardViewModel.swift in Sources */,
+				483BC068260A3BE200D58A2B /* MatchesMessagesController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

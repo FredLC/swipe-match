@@ -11,5 +11,6 @@ target 'SwipeMatch' do
   pod 'Firebase/Storage’
   pod 'SDWebImage'
   pod 'JGProgressHUD'
+  pod 'LBTATools'
 
 end
